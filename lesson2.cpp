@@ -44,6 +44,11 @@ void bin_to_hex(int n, uint8_t* b, char* s) {
   s[2*n+1]= '\0';
 }
 
+// Поменять местами половинки в байтах
+void swap(int n, uint8_t* b) {
+
+}
+
 int main() {
   char* s = new char[N];
   scanf("%s",s);
@@ -53,6 +58,8 @@ int main() {
   uint8_t* b = new uint8_t[m];
 
   hex_to_bin(s,b);
+
+  swap(m,b);
 
   for (int i=0; i<m; i++)
     printf("%02x",b[i]);
