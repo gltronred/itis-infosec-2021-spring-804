@@ -2,6 +2,13 @@
 #include <cstdint>
 #include <cstring>
 
+// & - побитовое И
+// | - побитовое ИЛИ
+// ~ - побитовое НЕ
+// << - сдвиг влево
+// >> - сдвиг вправо
+// 0x... - константы в шестнадцатеричном виде
+
 const int N=10001;
 
 uint8_t dec(char c) {
@@ -14,7 +21,8 @@ uint8_t dec(char c) {
 void hex_to_bin(char* s, uint8_t* b) {
   int n = strlen(s);
   for (int i=0, j=0; i<n; i+=2, j++) {
-    b[j] = dec(s[i])*16 + dec(s[i+1]);
+    // b[j] = dec(s[i]*16) + dec(s[i+1]);
+    b[j] = (dec(s[i]) << 4) | dec(s[i+1]);
   }
 }
 
@@ -28,8 +36,10 @@ char hex(uint8_t x) {
 
 void bin_to_hex(int n, uint8_t* b, char* s) {
   for (int i=0, j=0; i<n; i++, j+=2) {
-    s[j]  = hex(b[i]/16);
-    s[j+1]= hex(b[i]%16);
+    // s[j]  = hex(b[i]/16);
+    s[j] = hex(b[i] >> 4);
+    // s[j+1]= hex(b[i]%16);
+    s[j+1] = hex(b[i] & 0x0f);
   }
   s[2*n+1]= '\0';
 }
