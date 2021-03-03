@@ -62,6 +62,11 @@ void printRow(int n) {
     std::cout << (int)b[i] << " ";
   }
   std::cout << std::endl;
+  // освобождение памяти
+  delete[] a;
+  // не делайте так!
+  // работать с памятью после освобождения нельзя
+  // std::cout << b << std::endl;
 }
 
 // Строки
@@ -78,6 +83,8 @@ void printStr(int cnt) {
   }
   u[10] = '\0';
   std::cout << u << std::endl;
+  // освобождение памяти
+  delete[] u;
 }
 
 // Напишите функцию
@@ -100,5 +107,9 @@ int main() {
   std::cout << sumPascal(10) << std::endl;
   printRow(15);
   printStr(0);
+  // printHex("hello world\n");
+  int8_t x = 128;
+  uint8_t y = 128;
+  std::cout << (int)x << " " << (int)y << std::endl;
   return 0;
 }
