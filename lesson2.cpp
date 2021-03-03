@@ -29,5 +29,7 @@ int main() {
   char* t = new char[2*m+1];
   bin_to_hex(m,b,t);
 
+  printf("%s\n",t);
+
   return 0;
 }
